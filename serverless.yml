@@ -1,0 +1,25 @@
+service: oshirase
+provider:
+  name: aws
+  runtime: rust
+  stage: dev
+  region: ap-northeast-1
+plugins:
+  - serverless-rust
+package:
+  individually: true
+
+layers:
+  mydata:
+    path: static
+    description: credential and settings
+
+functions:
+  mimamori:
+    handler: oshirase
+    layers:
+      - { Ref: MydataLambdaLayer }
+    events:
+      - http:
+          path: /test
+          method: GET

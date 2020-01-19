@@ -1,0 +1,13 @@
+/target
+**/*.rs.bk
+
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
+# AWS Credential and settings
+/static/*
+!/static/Settings_template.toml
